@@ -10,14 +10,18 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) {
         int n = 0;
-        System.out.print("Enter n(>=1): ");
+        System.out.print("Enter n ( > 0 ): ");
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             n = Integer.parseInt(reader.readLine());
+            while(n < 1) {
+                System.out.println("n must be greater than 0");
+                System.out.print("Enter n ( > 0 ): ");
+                n = Integer.parseInt(reader.readLine());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (n < 1) System.out.println("n must be greater than 0");
-        else System.out.println("Sum of 1 to n: "+addNumbers(n));
+        System.out.println("Sum of 1 to "+n+": "+addNumbers(n));
     }
 
     private static int addNumbers(int n) {
